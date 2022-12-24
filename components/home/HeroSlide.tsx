@@ -1,42 +1,62 @@
 import { motion } from "framer-motion";
-import { BsCheckCircle } from "react-icons/bs";
+import { FC } from "react";
+import { AiFillCheckCircle, AiFillInfoCircle } from "react-icons/ai";
+import { SiMinutemailer } from "react-icons/si";
 import { textVariant } from "../../utils/motion";
 import { Button } from "../common/Button";
+import { Title } from "../common/Title";
+import { SliderItem } from "./HeroSection";
 
-export const HeroSlide = () => {
+interface Props {
+  item: SliderItem;
+}
+
+export const HeroSlide: FC<Props> = ({ item }) => {
+  const words = item.title.split(" ");
+  const firstWord = words.shift();
+  const lastWord = words.pop();
+  const title = words.join(" ");
+
   return (
     <div
-      className="w-screen h-screen bg-no-repeat bg-cover bg-center overshadow flex flex-col justify-center items-center"
+      className="w-screen h-screen bg-no-repeat bg-cover bg-center overshadow flex flex-col justify-center items-center p-2"
       style={{
-        backgroundImage: "url('/images/hero.jpg')",
+        backgroundImage: `url('${item.image}')`,
       }}
     >
-      <motion.div
-        variants={textVariant(1.1)}
-        initial="hidden"
-        whileInView="show"
-        className="text-white max-w-2xl"
-      >
-        <h6 className="text-indigo-500"> ASESORÍA Y CONSULTORÍA EN </h6>
-        <h1>SEGURIDAD Y SALUD EN EL TRABAJO </h1>
-      </motion.div>
+      <div className="max-w-3xl">
+        <motion.div
+          variants={textVariant(1.1)}
+          initial="hidden"
+          whileInView="show"
+          className="text-white"
+        >
+          <Title
+            subtitle="TE OFRECEMOS: "
+            title={title}
+            firstWord={firstWord || ""}
+            lastWord={lastWord}
+            className="text-2xl md:text-4xl  xl:text-6xl"
+          />
+        </motion.div>
 
-      <br />
-      <ul className="ml-8">
-        <Li label="Implementación" />
-        <Li label="Auditorías" />
-        <Li label="Auditorías" />
-        <Li label="Auditorías" />
-      </ul>
+        <br />
+        <ul className="ml-8">
+          {item.items.map((item) => (
+            <Li key={item} label={item} />
+          ))}
+        </ul>
 
-      <br />
-      <div>
-        <Button variant="outlined" color="indigo">
-          Contactar ahora <BsCheckCircle className="inline-block ml-2" />
-        </Button>
-        <Button variant="contained" color="indigo">
-          Descargar CV <BsCheckCircle className="inline-block ml-2" />
-        </Button>
+        <br />
+        <div className="flex gap-2">
+          <Button variant="contained">
+            Contactar ahora <SiMinutemailer className="inline-block ml-2" />
+          </Button>
+          <Button variant="outlined">
+            Sobre mí
+            <AiFillInfoCircle className="inline-block ml-2" />
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -44,7 +64,7 @@ export const HeroSlide = () => {
 
 const Li = ({ label }: { label: string }) => (
   <li className="text-white text-xl">
-    <BsCheckCircle className="inline-block mr-2 text-indigo-500 font-extrabold" />
+    <AiFillCheckCircle className="inline-block mr-2 text-indigo-500 font-extrabold" />
     {label}
   </li>
 );

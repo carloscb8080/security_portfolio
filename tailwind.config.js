@@ -13,7 +13,7 @@ module.exports = {
     plugin(function ({ addBase, theme }) {
       addBase({
         h1: {
-          fontSize: theme("fontSize.5xl"),
+          fontSize: theme("fontSize.6xl"),
           fontWeight: theme("fontWeight.bold"),
         },
         h2: {
@@ -36,10 +36,6 @@ module.exports = {
           fontSize: theme("fontSize.lg"),
           fontWeight: theme("fontWeight.bold"),
         },
-        // p: {
-        //   fontSize: theme("fontSize.lg"),
-        //   fontWeight: theme("fontWeight.semibold"),
-        // },
       });
     }),
   ],
