@@ -6,7 +6,7 @@ import { SectionLayout } from "../Layouts";
 
 export const ContactSection = () => {
   return (
-    <SectionLayout>
+    <SectionLayout className="p-4">
       <div className="max-w-4xl mx-auto  ">
         <Title
           subtitle="¿Trabajamos juntos?"

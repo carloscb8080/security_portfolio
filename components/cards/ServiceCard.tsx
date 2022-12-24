@@ -35,13 +35,13 @@ export const ServiceCard: FC<Props> = ({ service, active, onActive, idx }) => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="relative h-full w-full flex-1 flex items-center">
+      <div className="relative h-full w-full flex-1 flex items-center gap-2">
         <div>
           <h3
-            className={`text-white text-center  ${
+            className={`text-white text-center text-2xl ${
               active
                 ? ""
-                : "lg:absolute lg:bottom-0 lg:-rotate-90 lg:origin-top-left w-[40vh]"
+                : "lg:absolute lg:bottom-0 lg:-rotate-90 lg:origin-top-left lg:w-[40vh]"
             }`}
           >
             {service.title}
@@ -55,7 +55,6 @@ export const ServiceCard: FC<Props> = ({ service, active, onActive, idx }) => {
       </div>
       <div className="flex items-center justify-center">
         <div>
-          {/* <span className="text-white text-4xl font-bold">{idx + 1}</span> */}
           <Title title={String(idx + 1)} firstWord="" variant="secondary" />
         </div>
       </div>

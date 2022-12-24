@@ -39,7 +39,7 @@ export const educations: Education[] = [
 
 export const EducationSection = () => {
   return (
-    <SectionLayout>
+    <SectionLayout className="p-6">
       <div className="max-w-4xl mx-auto ">
         <Title
           subtitle="Más sobre "

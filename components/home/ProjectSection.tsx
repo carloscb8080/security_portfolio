@@ -66,7 +66,7 @@ const projects: Project[] = [
 export const ProjectSection = () => {
   return (
     <SectionLayout>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto p-4">
         <Title
           subtitle="Conoce más sobre: "
           firstWord="Mi"

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { reboundVariant } from "../../utils/motion";
 import { Route, routes } from "../../utils/routes";
@@ -7,7 +7,11 @@ import { Button } from "./Button";
 import { IconButton } from "./IconButton";
 
 export const NavBar = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    setShow(window.innerWidth > 1024);
+  }, []);
+
   return (
     <motion.nav
       initial="hidden"
@@ -42,8 +46,13 @@ export const NavBar = () => {
             </svg>
           </button>
         </div>
+
         {show && (
-          <div className="w-full text-center  block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div
+            className={`w-full text-center block flex-grow lg:flex lg:items-center lg:w-auto ${
+              show ? "bg-black bg-opacity-100 p-2 rounded-xl mt-1" : ""
+            }`}
+          >
             <div className="text-sm lg:flex-grow">
               {routes.map((route) => (
                 <NavBarItem key={route.label} route={route} />

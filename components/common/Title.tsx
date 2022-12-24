@@ -22,10 +22,10 @@ export const Title: FC<Props> = ({
   return (
     <div>
       {subtitle && <h6 className="text-indigo-500"> {subtitle} </h6>}
-      <h1 className={"leading-none " + className}>
+      <h1 className={"leading-none text-4xl lg:text-6xl " + className}>
         <span className={variant === "primary" ? classStroke : "relative"}>
           <span
-            className="absolute bg-indigo-500 w-16 h-16 -z-10  top-4 -left-4"
+            className="absolute bg-indigo-500 w-10 h-10 lg:w-16 lg:h-16 -z-10  top-4 -left-4"
             style={{
               borderRadius: "65% 35% 55% 45% / 30% 35% 65% 70%",
             }}

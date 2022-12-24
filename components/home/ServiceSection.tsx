@@ -62,7 +62,7 @@ export const ServiceSection = () => {
   };
   return (
     <SectionLayout>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto p-4">
         <Title
           subtitle="Conece los "
           firstWord="Servicios"

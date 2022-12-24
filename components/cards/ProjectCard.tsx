@@ -16,7 +16,9 @@ export const ProjectCard: FC<Props> = ({ project, active }) => {
       >
         {active && (
           <>
-            <h2 className="text-white font-bold">{project.title}</h2>
+            <h2 className="text-white font-bold text-xl lg:text-5xl">
+              {project.title}
+            </h2>
             <p className="text-white text-lg">{project.description}</p>
             <span className="text-white text-lg font-bold ">
               {project.date}

@@ -6,16 +6,16 @@ import { SectionLayout } from "../Layouts";
 export const AboutSection = () => {
   return (
     <SectionLayout>
-      <div className="flex mt-4 gap-12 max-w-7xl mx-auto flex-wrap-reverse items-center justify-center">
+      <div className="p-4 flex mt-4 gap-12 max-w-7xl mx-auto flex-wrap-reverse items-center justify-center">
         <div className="relative">
-          <div className="-rotate-6 bg-indigo-500 h-full w-full  absolute top-0 left-0 -z-10 rounded-2xl shadow-2xl" />
+          <div className="-rotate-6 bg-indigo-500 h-full w-[95%]  absolute top-0 left-0 -z-10 rounded-2xl shadow-2xl" />
           <Image
             src={photo}
             alt="team"
-            className="rounded-2xl shadow-2xl max-w-md w-full h-full object-cover"
+            className="rounded-2xl shadow-2xl max-w-md w-[95%] h-full object-cover"
           />
         </div>
-        <div className="flex-1 p-4 ">
+        <div className="flex-1">
           <Title
             firstWord="Sobre "
             title="mí"
@@ -37,7 +37,7 @@ export const AboutSection = () => {
 
           <br />
 
-          <div className="inline-grid grid-cols-2 gap-4">
+          {/* <div className="inline-grid grid-cols-2 gap-4">
             <span>
               <h6>Nombre: </h6>
             </span>
@@ -58,7 +58,7 @@ export const AboutSection = () => {
               <h6>Correo: </h6>
             </span>
             <span>ejemplo@gmail.com</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </SectionLayout>

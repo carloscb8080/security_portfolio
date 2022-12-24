@@ -24,7 +24,7 @@ export const HeroSlide: FC<Props> = ({ item }) => {
         backgroundImage: `url('${item.image}')`,
       }}
     >
-      <div className="max-w-3xl">
+      <div className="max-w-3xl flex flex-col items-center">
         <motion.div
           variants={textVariant(1.1)}
           initial="hidden"
@@ -41,7 +41,7 @@ export const HeroSlide: FC<Props> = ({ item }) => {
         </motion.div>
 
         <br />
-        <ul className="ml-8">
+        <ul className="ml-8 ">
           {item.items.map((item) => (
             <Li key={item} label={item} />
           ))}
