@@ -38,7 +38,7 @@ export const Title: FC<Props> = ({
         </div>
       )}
       <div className="relative ">
-        <div className="overflow-hidden before:content-start before:contend-[' '] before:absolute before:top-0 before:-left-5 before:h-12 before:aspect-square before:bg-indigo-500 before:rounded-tl-[65%] before:rounded-br-[35%] before:rounded-tr-[55%] before:rounded-bl-[45%] before:z-[-1] before:-rotate-180 before:opacity-70 ">
+        <div className="overflow-hidden p-2 before:content-start before:contend-[' '] before:absolute before:top-0 before:-left-5 before:h-12 before:aspect-square before:bg-indigo-500 before:rounded-tl-[65%] before:rounded-br-[35%] before:rounded-tr-[55%] before:rounded-bl-[45%] before:z-[-1] before:-rotate-180  ">
           <motion.h1
             initial="hidden"
             whileInView="show"

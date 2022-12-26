@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-
-import { motion } from "framer-motion";
 import { fadeIn } from "../../utils/motion";
-import { Area, Button, ContactItem, Input, Title } from "../common";
+import { ContactItem, Title } from "../common";
+import { ContactForm } from "../forms";
 import { SectionLayout } from "../Layouts";
 
 export const ContactSection = () => {
@@ -70,23 +70,7 @@ export const ContactSection = () => {
               className="text-gray-50"
             />
           </motion.div>
-
-          <div className=" flex flex-col justify-center items-center p-8">
-            <div className="flex flex-col lg:flex-row gap-4">
-              <Input label="Nombre" />
-              <Input label="Apellido" />
-            </div>
-            <div className="flex flex-col lg:flex-row gap-4">
-              <Input label="Correo" />
-              <Input label="Celular" />
-            </div>
-            <Input label="Asunto" />
-            <Area label="Mensaje" />
-
-            <Button variant="contained" className="w-full mt-2">
-              Enviar
-            </Button>
-          </div>
+          <ContactForm />
         </div>
       </div>
     </SectionLayout>
