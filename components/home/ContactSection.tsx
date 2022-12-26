@@ -1,12 +1,14 @@
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 
+import { motion } from "framer-motion";
+import { fadeIn } from "../../utils/motion";
 import { Area, Button, ContactItem, Input, Title } from "../common";
 import { SectionLayout } from "../Layouts";
 
 export const ContactSection = () => {
   return (
-    <SectionLayout className="p-4">
+    <SectionLayout className="p-4" id="contact-section">
       <div className="max-w-4xl mx-auto  ">
         <Title
           subtitle="¿Trabajamos juntos?"
@@ -18,7 +20,12 @@ export const ContactSection = () => {
         <br />
 
         <div className="flex flex-col lg:flex-row shadow-lg p-2 rounded-2xl ">
-          <div className="bg-indigo-500 rounded-2xl p-8">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            variants={fadeIn({})}
+            className="bg-indigo-500 rounded-2xl p-8"
+          >
             <h2 className="text-2xl font-bold text-gray-50">
               Información de contacto
             </h2>
@@ -62,14 +69,14 @@ export const ContactSection = () => {
               href="#"
               className="text-gray-50"
             />
-          </div>
+          </motion.div>
 
           <div className=" flex flex-col justify-center items-center p-8">
-            <div className="flex gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               <Input label="Nombre" />
               <Input label="Apellido" />
             </div>
-            <div className="flex gap-4">
+            <div className="flex flex-col lg:flex-row gap-4">
               <Input label="Correo" />
               <Input label="Celular" />
             </div>

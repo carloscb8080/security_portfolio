@@ -5,19 +5,25 @@ export interface Route {
 
 export const routes: Route[] = [
   {
-    href: "/",
     label: "Inicio",
+    href: "/",
   },
+
   {
-    href: "/about",
     label: "Sobre mí",
+    href: "/#about-section",
   },
   {
-    href: "/contact",
+    label: "Servicios",
+    href: "/#service-section",
+  },
+  {
+    label: "Educación",
+    href: "/#education-section",
+  },
+
+  {
     label: "Contacto",
-  },
-  {
-    href: "/experience",
-    label: "Experiencia",
+    href: "/#contact-section",
   },
 ];

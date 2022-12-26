@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
+import { RiWhatsappFill } from "react-icons/ri";
 import { reboundVariant } from "../../utils/motion";
 import { Route, routes } from "../../utils/routes";
 import { Button } from "./Button";
@@ -49,7 +51,7 @@ export const NavBar = () => {
 
         {show && (
           <div
-            className={`w-full text-center block flex-grow lg:flex lg:items-center lg:w-auto ${
+            className={`w-full text-center block flex-grow lg:flex lg:items-center lg:w-auto lg:bg-transparent  ${
               show ? "bg-black bg-opacity-100 p-2 rounded-xl mt-1" : ""
             }`}
           >
@@ -64,12 +66,17 @@ export const NavBar = () => {
                 <AiFillFacebook />
               </IconButton>
               <IconButton>
+                <RiWhatsappFill />
+              </IconButton>
+              <IconButton>
                 <AiFillLinkedin />
               </IconButton>
 
-              <Button color="indigo" className="ml-2">
-                Pedir cotización
-              </Button>
+              <Link href="/#contact-section">
+                <Button color="indigo" className="ml-2">
+                  Contáctame
+                </Button>
+              </Link>
             </div>
           </div>
         )}
@@ -80,11 +87,11 @@ export const NavBar = () => {
 
 const NavBarItem = ({ route }: { route: Route }) => {
   return (
-    <a
+    <Link
       href={route.href}
-      className=" border-b-4  border-transparent block mt-4 lg:inline-block lg:mt-0 text-white mr-4 font-extrabold hover:text-indigo-500 hover:border-indigo-500"
+      className="transition ease-in-out duration-300 border-b-4 border-transparent block mt-4 lg:inline-block lg:mt-0 text-white mr-4 font-extrabold hover:text-indigo-500 hover:border-indigo-500"
     >
       {route.label}
-    </a>
+    </Link>
   );
 };

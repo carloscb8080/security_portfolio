@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
 import { fadeIn } from "../../utils/motion";
-import { Title } from "../common/Title";
 import { Service } from "../home/ServiceSection";
 
 interface Props {
@@ -54,9 +53,9 @@ export const ServiceCard: FC<Props> = ({ service, active, onActive, idx }) => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div>
-          <Title title={String(idx + 1)} firstWord="" variant="secondary" />
-        </div>
+        <span className=" text-gray-100 text-2xl font-bold bg-indigo-500  rounded-full p-4">
+          {idx + 1}
+        </span>
       </div>
     </motion.div>
   );

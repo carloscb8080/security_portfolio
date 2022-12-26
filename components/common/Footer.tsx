@@ -15,9 +15,9 @@ export const Footer = () => {
       <div className="flex justify-center items-center gap-4 max-w-7xl mx-auto flex-col lg:flex-row">
         <div className="flex-1">
           <Title
-            firstWord="José Carlos"
-            title="Buitrago"
-            subtitle="Full Stack Developer"
+            firstWord="José"
+            title="Carlos"
+            subtitle="Ingeniero de seguridad"
             isDark
             className="text-4xl"
           />

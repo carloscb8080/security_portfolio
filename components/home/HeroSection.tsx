@@ -37,7 +37,7 @@ const sliderItems: SliderItem[] = [
 
 export const HeroSection = () => {
   return (
-    <SectionLayout>
+    <SectionLayout id="hero-section">
       <Carrousel>
         {sliderItems.map((item, index) => (
           <SwiperSlide key={index}>

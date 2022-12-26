@@ -4,7 +4,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 }
 export const SectionLayout: FC<Props> = ({ children, className, ...props }) => {
   return (
-    <section className={"mb-60 " + className} {...props}>
+    <section className={"mb-10 sm:mb-30 lg:mb-60 " + className} {...props}>
       {children}
     </section>
   );

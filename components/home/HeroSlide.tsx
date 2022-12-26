@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FC } from "react";
-import { AiFillCheckCircle, AiFillInfoCircle } from "react-icons/ai";
-import { SiMinutemailer } from "react-icons/si";
-import { textVariant } from "../../utils/motion";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { HiInformationCircle } from "react-icons/hi";
+import { RiDownloadCloudFill } from "react-icons/ri";
+import { fadeIn } from "../../utils/motion";
 import { Button } from "../common/Button";
 import { Title } from "../common/Title";
 import { SliderItem } from "./HeroSection";
@@ -25,36 +27,32 @@ export const HeroSlide: FC<Props> = ({ item }) => {
       }}
     >
       <div className="max-w-3xl flex flex-col items-center">
-        <motion.div
-          variants={textVariant(1.1)}
-          initial="hidden"
-          whileInView="show"
-          className="text-white"
-        >
-          <Title
-            subtitle="TE OFRECEMOS: "
-            title={title}
-            firstWord={firstWord || ""}
-            lastWord={lastWord}
-            className="text-2xl md:text-4xl  xl:text-6xl"
-          />
-        </motion.div>
+        <Title
+          subtitle="TE OFRECEMOS: "
+          title={title}
+          firstWord={firstWord || ""}
+          lastWord={lastWord}
+          className="text-2xl md:text-4xl  xl:text-6xl text-white"
+        />
 
         <br />
         <ul className="ml-8 ">
-          {item.items.map((item) => (
-            <Li key={item} label={item} />
+          {item.items.map((item, idx) => (
+            <Li key={item} label={item} idx={idx} />
           ))}
         </ul>
 
         <br />
+        <br />
         <div className="flex gap-2">
-          <Button variant="contained">
-            Contactar ahora <SiMinutemailer className="inline-block ml-2" />
-          </Button>
+          <Link href="/#about-section">
+            <Button variant="contained">
+              Sobre mí <HiInformationCircle className="inline-block ml-2" />
+            </Button>
+          </Link>
           <Button variant="outlined">
-            Sobre mí
-            <AiFillInfoCircle className="inline-block ml-2" />
+            Mi cv
+            <RiDownloadCloudFill className="inline-block ml-2" />
           </Button>
         </div>
       </div>
@@ -62,9 +60,17 @@ export const HeroSlide: FC<Props> = ({ item }) => {
   );
 };
 
-const Li = ({ label }: { label: string }) => (
-  <li className="text-white text-xl">
+const Li = ({ label, idx }: { label: string; idx: number }) => (
+  <motion.li
+    className="text-white text-xl"
+    initial="hidden"
+    whileInView="show"
+    variants={fadeIn({
+      direction: "up",
+      delay: idx * 0.2,
+    })}
+  >
     <AiFillCheckCircle className="inline-block mr-2 text-indigo-500 font-extrabold" />
     {label}
-  </li>
+  </motion.li>
 );

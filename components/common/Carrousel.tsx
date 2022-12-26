@@ -49,7 +49,7 @@ export const Carrousel: FC<Props> = ({ children, ...props }) => {
       >
         <div
           ref={prev}
-          className="bg-indigo-500 text-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-600"
+          className="bg-indigo-500 shadow-2xl text-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ export const Carrousel: FC<Props> = ({ children, ...props }) => {
       >
         <div
           ref={next}
-          className="bg-indigo-500 text-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-600"
+          className="bg-indigo-500 shadow-2xl text-white w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
