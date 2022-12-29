@@ -1,0 +1,66 @@
+fragment AuthorField on Author {
+  id
+  biography
+  birth
+  email
+  firstName
+  lastName
+  phone
+  profession
+  facebook
+  linkedin
+  instagram
+  keywords
+  address
+  cv {
+    url
+  }
+  avatar {
+    url
+  }
+}
+
+query getHomeData {
+  authors(first: 1) {
+    ...AuthorField
+  }
+
+  carousels(orderBy: publishedAt_ASC) {
+    id
+    items
+    title
+    subTitle
+    image {
+      url
+    }
+  }
+
+  services(orderBy: publishedAt_ASC) {
+    id
+    image {
+      url
+    }
+    items
+    title
+    description
+  }
+
+  experiences(orderBy: publishedAt_ASC) {
+    date
+    description
+    id
+    business
+    image {
+      url
+    }
+    title
+  }
+
+  educations(orderBy: publishedAt_ASC) {
+    date
+    description
+    id
+    institution
+    title
+  }
+}

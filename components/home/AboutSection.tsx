@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useContext } from "react";
+import {
+  RiFacebookBoxFill,
+  RiLinkedinBoxFill,
+  RiWhatsappFill,
+} from "react-icons/ri";
+import { AuthorContext } from "../../context";
 import photo from "../../public/images/foto4.jpg";
 import { fadeIn, rotateAndTranslate } from "../../utils/motion";
 import { Title } from "../common/Title";
 import { SectionLayout } from "../Layouts";
 
 export const AboutSection = () => {
+  const { author } = useContext(AuthorContext);
   return (
     <SectionLayout id="about-section">
       <div className="p-4 flex mt-4 gap-12 max-w-7xl mx-auto flex-wrap-reverse items-center justify-center">
@@ -44,41 +52,88 @@ export const AboutSection = () => {
             variants={fadeIn({})}
             className="text-gray-600 text-lg"
           >
-            Ingeniero colegiado egresado de la Universidad Nacional de Trujillo,
-            profesional aprobado por Osha Institute; con experiencia e interés
-            prevención de riesgos laborales en trabajos de alto riesgo en el
-            sector minero, contrucción y eléctrico. Implementación de SGSST,
-            herramientas de gestión,estándares de seguridad, auditorías internas
-            de SST y capacitacion de personal de las areas operativas a fin de
-            lograr concientización y cero accidentes.
+            {author.biography}
           </motion.p>
 
           <br />
 
-          <div className="inline-grid grid-cols-2 gap-4">
-            <span>
-              <h6>Nombre: </h6>
-            </span>
-            <span>Jhon Doe</span>
+          <div className="flex gap-4 flex-wrap">
+            <div className="flex flex-col flex-1 gap-4">
+              <Item
+                label="Nombre"
+                value={author.firstName + " " + author.lastName}
+              />
+              <Item
+                label="Edad"
+                value={
+                  new Date().getFullYear() -
+                  new Date(author.birth).getFullYear() +
+                  " años"
+                }
+              />
+              <Item label="Email" value={author.email} />
+              <Item label="Teléfono" value={author.phone} />
+              <Item label="Dirección" value={author.address} />
+            </div>
+            <div className="flex gap-4 flex-col flex-1">
+              {author.facebook && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-blue-500 text-white p-2 rounded-md font-bold flex items-center justify-center"
+                  href={author.facebook as string}
+                >
+                  <RiFacebookBoxFill className="mr-2" />
+                  Facebook
+                </a>
+              )}
 
-            <span>
-              <h6>Apellidos: </h6>
-            </span>
+              {author.instagram && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-pink-500 text-white p-2 rounded-md font-bold flex items-center justify-center"
+                  href={author.instagram as string}
+                >
+                  <RiFacebookBoxFill className="mr-2" />
+                  Instagram
+                </a>
+              )}
 
-            <span>Jhon Doe</span>
+              {author.linkedin && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-blue-900 text-white p-2 rounded-md font-bold flex items-center justify-center"
+                  href={author.linkedin as string}
+                >
+                  <RiLinkedinBoxFill className="mr-2" />
+                  Linkedin
+                </a>
+              )}
 
-            <span>
-              <h6>Edad: </h6>
-            </span>
-            <span>30</span>
-
-            <span>
-              <h6>Correo: </h6>
-            </span>
-            <span>ejemplo@gmail.com</span>
+              {author.phone && (
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-green-500 text-white p-2 rounded-md font-bold flex items-center justify-center"
+                  href={`https://wa.me/${author.phone}?text=Hola%20${author.firstName}%20${author.lastName}%20me%20gustaría%20que%20me%20hagas%20una%20cotización`}
+                >
+                  <RiWhatsappFill className="mr-2" />
+                  Contáctame
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </SectionLayout>
   );
 };
+
+const Item = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex gap-4">
+    <span className="text-gray-600">{label}</span>
+    <span className="text-gray-900">{value}</span>
+  </div>
+);

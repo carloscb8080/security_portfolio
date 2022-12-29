@@ -1,33 +1,33 @@
 import Image from "next/image";
+import { useContext } from "react";
 import {
   AiFillFacebook,
   AiFillInstagram,
   AiFillLinkedin,
 } from "react-icons/ai";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
+import { AuthorContext } from "../../context";
 import { ContactItem } from "./ContactItem";
 import { IconButton } from "./IconButton";
 import { Title } from "./Title";
 
 export const Footer = () => {
+  const { author } = useContext(AuthorContext);
   return (
     <footer className="p-8 border-t-2 border-t-gray-200 ">
       <div className="flex justify-center items-center gap-4 max-w-7xl mx-auto flex-col lg:flex-row">
         <div className="flex-1">
           <Title
-            firstWord="José"
-            title="Carlos"
-            subtitle="Ingeniero de seguridad"
+            firstWord={author.firstName}
+            title={author.lastName}
+            subtitle={author.profession}
             isDark
-            className="text-4xl"
+            className="text-2xl"
           />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          </p>
         </div>
         <div className="flex-1 flex flex-col items-center">
           <Image
-            src="/images/foto1.jpg"
+            src={author.avatar.url}
             width={100}
             height={100}
             alt="logo"
@@ -35,25 +35,27 @@ export const Footer = () => {
           />
 
           <div className="flex items-center">
-            <a
-              href="https://www.linkedin.com/in/carloscb8080/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <IconButton>
-                <AiFillLinkedin />
-              </IconButton>
-            </a>
-            <a href="" target="_blank" rel="noreferrer">
-              <IconButton>
-                <AiFillInstagram />
-              </IconButton>
-            </a>
-            <a href="" target="_blank" rel="noreferrer">
-              <IconButton>
-                <AiFillFacebook />
-              </IconButton>
-            </a>
+            {author.linkedin && (
+              <a href={author.linkedin} target="_blank" rel="noreferrer">
+                <IconButton>
+                  <AiFillLinkedin />
+                </IconButton>
+              </a>
+            )}
+            {author.instagram && (
+              <a href={author.instagram} target="_blank" rel="noreferrer">
+                <IconButton>
+                  <AiFillInstagram />
+                </IconButton>
+              </a>
+            )}
+            {author.facebook && (
+              <a href={author.facebook} target="_blank" rel="noreferrer">
+                <IconButton>
+                  <AiFillFacebook />
+                </IconButton>
+              </a>
+            )}
           </div>
         </div>
         <div className="flex-1">
@@ -61,22 +63,21 @@ export const Footer = () => {
             className=""
             icon={<MdEmail />}
             title="Correo"
-            text="carloscb8080@gmail.com "
-            href="#"
+            text={author.email}
+            href={`mailto:${author.email}`}
           />
           <ContactItem
             className=""
             icon={<MdPhone />}
             title="Teléfono"
-            text="(+57) 300 000 0000"
-            href="#"
+            text={author.phone}
+            href={`tel:${author.phone}`}
           />
           <ContactItem
             className=""
-            icon={<AiFillFacebook />}
-            title="Facebook"
-            text="facebook.com/carloscb8080"
-            href="#"
+            icon={<MdLocationOn />}
+            title="Dirección"
+            text={author.address}
           />
         </div>
       </div>

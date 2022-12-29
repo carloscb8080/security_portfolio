@@ -4,7 +4,7 @@ export interface ItemContactProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: React.ReactNode;
   title: string;
   text: string;
-  href: string;
+  href?: string;
 }
 
 export const ContactItem: FC<ItemContactProps> = ({
@@ -23,9 +23,13 @@ export const ContactItem: FC<ItemContactProps> = ({
       <span className="text-3xl">{icon}</span>
       <div>
         <h3 className="text-xl font-bold leading-none ">{title}</h3>
-        <a className="" href={href}>
-          {text}
-        </a>
+        {href ? (
+          <a className="hover:underline" href={href}>
+            {text}
+          </a>
+        ) : (
+          <span>{text}</span>
+        )}
       </div>
     </div>
   );

@@ -1,45 +1,15 @@
+import { FC } from "react";
+import { Education } from "../../graphql";
 import { TimeLine, Title } from "../common";
 import { TimeItem } from "../common/TimeItem";
 import { SectionLayout } from "../Layouts";
 
-export interface Education {
-  id: number;
-  title: string;
-  description: string;
-  school: string;
-  date: string;
+interface Props {
+  educations: Education[];
 }
-
-export const educations: Education[] = [
-  {
-    id: 1,
-    title: "Ingeniero en seguridad de trabajo",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    school: "Universidad de Antioquia",
-    date: "2019 - 2021",
-  },
-  {
-    id: 2,
-    title: "Normas ISO 9001:2015",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    school: "Universidad de de arequipa",
-    date: "2019 - 2021",
-  },
-  {
-    id: 3,
-    title: "Normas ISO 14001:2015",
-    description:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    school: "Universidad de de arequipa",
-    date: "2019 - 2021",
-  },
-];
-
-export const EducationSection = () => {
+export const EducationSection: FC<Props> = ({ educations }) => {
   return (
-    <SectionLayout className="p-6" id="education-section">
+    <SectionLayout className="p-6 bg-gray-200" id="education-section">
       <div className="max-w-4xl mx-auto ">
         <Title
           subtitle="Más sobre "
@@ -51,9 +21,18 @@ export const EducationSection = () => {
         <br />
         <div className="flex flex-col items-center justify-center">
           <TimeLine>
-            {educations.map((education, idx) => (
-              <TimeItem key={education.id} {...education} idx={idx} />
-            ))}
+            {educations.map(
+              ({ id, title, description, institution, date }, idx) => (
+                <TimeItem
+                  key={id}
+                  idx={idx}
+                  title={title}
+                  description={description as string}
+                  date={date as string}
+                  school={institution}
+                />
+              )
+            )}
           </TimeLine>
         </div>
       </div>

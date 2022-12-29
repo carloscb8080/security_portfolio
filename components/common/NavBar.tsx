@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiFillFacebook, AiFillLinkedin } from "react-icons/ai";
-import { RiWhatsappFill } from "react-icons/ri";
+import { IoCallSharp } from "react-icons/io5";
+import { AuthorContext } from "../../context";
 import { reboundVariant } from "../../utils/motion";
 import { Route, routes } from "../../utils/routes";
 import { Button } from "./Button";
 import { IconButton } from "./IconButton";
 
 export const NavBar = () => {
+  const { author } = useContext(AuthorContext);
+  const name =
+    author.firstName.split(" ")[0] + " " + author.lastName.split(" ")[0];
   const [show, setShow] = useState(false);
+
   useEffect(() => {
     setShow(window.innerWidth > 1024);
   }, []);
@@ -24,7 +29,7 @@ export const NavBar = () => {
       <div className="flex items-center justify-between flex-wrap max-w-7xl mx-auto">
         <div className="flex items-center flex-shrink-0  mr-6">
           <span className="italic relative font-semibold text-white text-xl tracking-tight">
-            Juan Carlos
+            {name}
             <span
               className="t-stroke absolute bg-indigo-500 w-10 h-10 -z-10  -left-4"
               style={{
@@ -62,15 +67,29 @@ export const NavBar = () => {
             </div>
             <div className="block lg:hidden mt-4" />
             <div className="flex justify-center items-center">
-              <IconButton>
-                <AiFillFacebook />
-              </IconButton>
-              <IconButton>
-                <RiWhatsappFill />
-              </IconButton>
-              <IconButton>
-                <AiFillLinkedin />
-              </IconButton>
+              {author.facebook && (
+                <IconButton
+                  onClick={() =>
+                    window.open(author.facebook as string, "_blank")
+                  }
+                >
+                  <AiFillFacebook />
+                </IconButton>
+              )}
+              {author.phone && (
+                <IconButton onClick={() => window.open(`tel:${author.phone}`)}>
+                  <IoCallSharp />
+                </IconButton>
+              )}
+              {author.linkedin && (
+                <IconButton
+                  onClick={() =>
+                    window.open(author.linkedin as string, "_blank")
+                  }
+                >
+                  <AiFillLinkedin />
+                </IconButton>
+              )}
 
               <Link href="/#contact-section">
                 <Button color="indigo" className="ml-2">

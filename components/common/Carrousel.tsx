@@ -38,7 +38,7 @@ export const Carrousel: FC<Props> = ({ children, ...props }) => {
         nextEl: next.current,
       }}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper "
       {...props}
     >
       {children}

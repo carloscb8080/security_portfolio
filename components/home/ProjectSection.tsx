@@ -1,69 +1,20 @@
+import { FC, useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
+import { Experience } from "../../graphql";
 import { ProjectCard } from "../cards";
 import { Carrousel, Title } from "../common";
 import { SectionLayout } from "../Layouts";
 
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  url: string;
-  date: string;
+interface Props {
+  experiences: Experience[];
 }
+export const ProjectSection: FC<Props> = ({ experiences }) => {
+  const [lg, setLg] = useState(false);
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Implementación de seguridad en el trabajo",
-    description: "Implementación de seguridad en el trabajo",
-    image: "/images/foto1.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-  {
-    id: 2,
-    title: "Capacitaciones en seguridad en el trabajo",
-    description: "Capacitaciones en seguridad en el trabajo",
-    image: "/images/foto2.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-  {
-    id: 3,
-    title: "Asesorias en seguridad en el trabajo",
-    description: "Asesorias en seguridad en el trabajo",
-    image: "/images/foto3.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-  {
-    id: 4,
-    title: "Implementación de normativa vigente",
-    description: "Implementación de normativa vigente",
-    image: "/images/foto4.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-  {
-    id: 5,
-    title: "Auditorias de seguridad en el trabajo",
-    description: "Auditorias de seguridad en el trabajo",
-    image: "/images/foto5.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-  {
-    id: 6,
-    title: "Elaboración de informes de seguridad en el trabajo",
-    description: "Elaboración de informes de seguridad en el trabajo",
-    image: "/images/foto8.jpg",
-    url: "https://www.google.com",
-    date: "2021-01-01",
-  },
-];
+  useEffect(() => {
+    setLg(window.innerWidth > 1024);
+  }, []);
 
-export const ProjectSection = () => {
   return (
     <SectionLayout id="project-section">
       <div className="max-w-6xl mx-auto p-4">
@@ -76,11 +27,15 @@ export const ProjectSection = () => {
       </div>
       <br />
       <br />
-      <Carrousel slidesPerView={2} spaceBetween={20} autoplay>
-        {projects.map((project) => (
-          <SwiperSlide key={project.id}>
+      <Carrousel
+        slidesPerView={lg ? 2 : "auto"}
+        spaceBetween={lg ? 20 : 0}
+        autoplay
+      >
+        {experiences.map((experience) => (
+          <SwiperSlide key={experience.id}>
             {({ isActive }) => (
-              <ProjectCard project={project} active={isActive} />
+              <ProjectCard experience={experience} active={isActive} />
             )}
           </SwiperSlide>
         ))}
